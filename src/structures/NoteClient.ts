@@ -1,44 +1,35 @@
-import { delay, embed }  from '../Util';
-import { AkairoClient, Command, CommandHandler, ListenerHandler } from "discord-akairo";
-import { Intents, Message } from "discord.js";
-import config from '../config';
+import { CommandClient } from 'eris';
 import { join } from 'path';
-export default class NoteClient extends AkairoClient {
+import { promises as fsPromises } from "fs";
+import Listener from './Listener';
+const { readdir } = fsPromises;
+export default class NoteClient extends CommandClient {
     constructor() {
-        super({
-            ownerID: config.ownerID,
-            intents: Intents.ALL
-        },{
-            intents: Intents.ALL,
-            partials: ["REACTION", "MESSAGE", "CHANNEL", "GUILD_MEMBER", "USER"],
+        super(process.env.TOKEN as string, {
+            allowedMentions: {
+                everyone: false
+            },
+            intents: [
+                "guilds",
+                "guildMessages",
+                "guildVoiceStates"
+            ]
+        }, {
+            ignoreBots: true,
+            ignoreSelf: true,
+            prefix: 'n!'
         })
     }
-    public commandHandler = new CommandHandler(this, {
-        prefix: config.prefix,
-        defaultCooldown: 3000,
-        directory: join(__dirname, '..', 'commands'),
-        allowMention: true,
-        handleEdits: true,
-        commandUtil: true,
-        commandUtilLifetime: 3e5,
-        argumentDefaults: {
-            prompt: {
-                time: 15000,
-                ended: 'Command ended',
-                timeout: '`15` seconds has been passed!, timeout!',
-            }
+    public async loadListeners() {
+        const listeners = await readdir(join(__dirname, "..", "listeners"));
+        for (const listenerFile of listeners) {
+            const listenerClass = require(`../listeners/${listenerFile}`).default;
+            const listener: Listener = new listenerClass(this);
+            this.on(listener.name, listener.exec.bind(listener));
         }
-    }).on('cooldown', async (message: Message, command: Command, remaining: number) => {
-        const awaitMsg = await message.channel.send(embed('info', `Please wait \`${remaining}\` seconds before using command again`))
-        await delay(remaining)
-        awaitMsg.delete()
-    })
-    public listenerHandler = new ListenerHandler(this, {
-        directory: join(__dirname, '..', 'listeners')
-    });
-    public load() {
-        //this.commandHandler.loadAll()
-        this.listenerHandler.loadAll()
-        this.login()
+    }
+    public login() {
+        this.loadListeners()
+        this.connect()
     }
 }

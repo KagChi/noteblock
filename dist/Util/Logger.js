@@ -20,7 +20,7 @@ log4js_1.default.configure({
         dateFile: {
             type: 'dateFile',
             filename: 'logs/noteblock.log',
-            pattern: 'hh-dd-MM-yyyy',
+            pattern: 'yyyy-MM-dd-hh',
             compress: true
         },
         out: {
@@ -31,4 +31,4 @@ log4js_1.default.configure({
         default: { appenders: ['file', 'dateFile', 'out'], level: 'info' }
     }
 });
-exports.logger = log4js_1.default.getLogger('NOTEBLOCK');
+exports.logger = log4js_1.default.getLogger("NOTEBLOCK");

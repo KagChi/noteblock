@@ -5,9 +5,9 @@ log4js.configure(
         file: {
           type: 'file',
           filename: 'logs/noteblock.log',
-          maxLogSize: 10 * 1024 * 1024,
-          backups: 5, 
-          compress: true,
+          maxLogSize: 10 * 1024 * 1024, // = 10Mb
+          backups: 5, // keep five backup files
+          compress: true, // compress the backups
           encoding: 'utf-8',
           mode: 0o0640,
           flags: 'w+'
@@ -15,7 +15,7 @@ log4js.configure(
         dateFile: {
           type: 'dateFile',
           filename: 'logs/noteblock.log',
-          pattern: 'hh-dd-MM-yyyy',
+          pattern: 'yyyy-MM-dd-hh',
           compress: true
         },
         out: {
@@ -27,4 +27,5 @@ log4js.configure(
       }
     }
   );
-export const logger = log4js.getLogger('NOTEBLOCK')
+
+export const logger = log4js.getLogger("NOTEBLOCK");
