@@ -1,16 +1,17 @@
 {
+  "name": "noteblock",
+  "version": "1.0.0",
+  "description": "A music discord bot",
+  "main": "src/main",
+  "repository": "https://github.com/KagChi/noteblock.git",
+  "author": "KagChi",
+  "license": "GPL-3.0",
+  "private": true,
   "dependencies": {
+    "discord-akairo": "^8.1.0",
+    "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "eris": "^0.14.0",
-    "lavaclient": "^3.2.5",
-    "log4js": "^6.3.0",
-    "node-fetch": "^2.6.1"
-  },
-  "devDependencies": {
-    "@types/node": "^14.14.34"
-  },
-  "scripts": {
-    "start": "node dist",
-    "build": "rimraf dist && tsc"
+    "erela.js": "^2.3.2",
+    "log4js": "^6.3.0"
   }
 }

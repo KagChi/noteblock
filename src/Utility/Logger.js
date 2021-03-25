@@ -1,4 +1,4 @@
-import log4js from 'log4js';
+const log4js = require("log4js");
 log4js.configure(
     {
       appenders: {
@@ -27,5 +27,5 @@ log4js.configure(
       }
     }
   );
-
-export const logger = log4js.getLogger("NOTEBLOCK");
+const logger = log4js.getLogger("NOTEBLOCK");
+module.exports = { logger }
