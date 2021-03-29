@@ -8,6 +8,6 @@ module.exports = class nodeDisconnect extends Listener {
         });
     }
     exec(node) {
-        this.client.loggerr.warn(`NODE [${node.options.identifier}] DISCONNECTED`)
+        this.client.logger.warn(`NODE [${node.options.identifier}] DISCONNECTED`)
     }
 }

@@ -13,5 +13,8 @@
     "dotenv": "^8.2.0",
     "erela.js": "^2.3.2",
     "log4js": "^6.3.0"
+  },
+  "scripts": {
+    "start": "node src/main"
   }
 }
