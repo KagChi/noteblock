@@ -20,23 +20,36 @@ module.exports = class PlayCommand extends Command {
   }
   async exec(msg, { query }) {
       const MusicTracks = await this.client.erela.search(query, msg.author)
+      if(MusicTracks.loadType === "NO_MATCHES") return msg.channel.send(CreateEmbed('warn', '⛔ | No result found.'));
+      if(MusicTracks.loadType === "LOAD_FAILED") return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured when loading the track.'))
+      const GuildPlayers = this.client.erela.players.get(msg.guild.id)
+      if(!GuildPlayers) {
       const player = await this.client.erela.create({
           guild: msg.guild.id,
           voiceChannel: msg.member.voice.channel.id,
           textChannel: msg.channel.id,
       })
       player.connect();
-      player.queue.add(MusicTracks.tracks[0]);
-      msg.channel.send(`Enqueuing track ${MusicTracks.tracks[0].title}.`);
-      if (!player.playing && !player.paused && !player.queue.size)
+      if(MusicTracks.loadType === "PLAYLIST_LOADED") {
+          for(const track of MusicTracks.tracks) {
+              player.queue.add(track)
+          }
+          msg.channel.send(CreateEmbed('info', `☑ | Added Playlist ${MusicTracks.playlist.name} [${msg.author}] [\`${MusicTracks.tracks.length} tracks\`]`));
+      } else {
+        player.queue.add(MusicTracks.tracks[0]);
+        msg.channel.send(CreateEmbed('info', `☑ | Added track ${MusicTracks.tracks[0].title} [${msg.author}]`));
+      }
       player.play();
-
-    // For playlists you'll have to use slightly different if statement
-    if (
-      !player.playing &&
-      !player.paused &&
-      player.queue.totalSize === MusicTracks.tracks.length
-    )
-      player.play();
+  } else {
+    if(MusicTracks.loadType === "PLAYLIST_LOADED") {
+        for(const track of MusicTracks.tracks) {
+            GuildPlayers.queue.add(track)
+        }
+        msg.channel.send(CreateEmbed('info', `☑ | Added Playlist ${MusicTracks.playlist.name} [${msg.author}] [\`${MusicTracks.tracks.length} tracks\`]`));
+    } else {
+        GuildPlayers.queue.add(MusicTracks.tracks[0]);
+      msg.channel.send(CreateEmbed('info', `☑ | Added track ${MusicTracks.tracks[0].title} [${msg.author}]`));
+    }
   }
+ }
 }
