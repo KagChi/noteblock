@@ -7,7 +7,7 @@ module.exports = class PlayCommand extends Command {
         description: {
             content: 'Play some music.'
         },
-        category: 'util',
+        category: 'Music',
         cooldown: 3000,
         args: [
             {

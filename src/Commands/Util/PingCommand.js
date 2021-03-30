@@ -7,7 +7,7 @@ module.exports = class PingCommand extends Command {
         description: {
             content: 'Gets the bot\'s heartbeat and latency'
         },
-        category: 'util',
+        category: 'Util',
         cooldown: 3000,
     });
   }
