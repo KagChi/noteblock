@@ -24,7 +24,7 @@ module.exports = class PingCommand extends Command {
     try {
       if (!command) {
         const embed = CreateEmbed('info')
-          .addField(`${this.client.user.username} command's`, `${this.client.config.prefix} [command]`);
+          .addField(`${this.client.user.username} command's`, `${this.client.config.prefix}help [command]`);
         for (const category of this.handler.categories.values()) {
           embed.addField(category, `${category.filter((cmd) => cmd.aliases.length > 0).map((cmd) => `\`${cmd.aliases[0]}\``).join(', ')}`);
         }
@@ -36,7 +36,8 @@ module.exports = class PingCommand extends Command {
         .addField('Examples', command.description.examples && command.description.examples.length ? `\`${command.aliases[0]} ${command.description.examples.join(`\`\n\`${command.aliases[0]} `)}\`` : 'None.');
       return msg.channel.send(embed);
     } catch (e) {
-      return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured').setDescription(e.messaage));
+      this.client.logger.error(e.message);
+      return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured'));
     }
   }
 };

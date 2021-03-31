@@ -19,6 +19,14 @@ module.exports = class NoteClient extends AkairoClient {
       directory: join(__dirname, '..', 'Commands'),
       prefix: config.prefix,
       defaultCooldown: 3000,
+      argumentDefaults: {
+        prompt: {
+          timeout: CreateEmbed('info', '⛔ | command timeout.'),
+          ended: CreateEmbed('info', '⛔ | invalid arguments, command session has ended.'),
+          retries: 3,
+          time: 30000,
+        },
+      },
     }).on('commandFinished', (msg, command) => {
       this.logger.info(`[${msg.author.tag}] USING [${command.id.toUpperCase()}] COMMANDS`);
     }).on('cooldown', async (msg, command, remaining) => {

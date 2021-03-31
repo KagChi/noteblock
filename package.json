@@ -1,6 +1,6 @@
 {
   "name": "noteblock",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A music discord bot",
   "main": "src/main",
   "repository": "https://github.com/KagChi/noteblock.git",
@@ -13,7 +13,8 @@
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "erela.js": "^2.3.2",
-    "log4js": "^6.3.0"
+    "log4js": "^6.3.0",
+    "ms": "^2.1.3"
   },
   "scripts": {
     "start": "node src/main",

@@ -64,7 +64,8 @@ module.exports = class PlayCommand extends Command {
       GuildPlayers.queue.add(MusicTracks.tracks[0]);
       return msg.channel.send(CreateEmbed('info', `☑ | Added track \`${MusicTracks.tracks[0].title}\` [${msg.author}]`));
     } catch (e) {
-      return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured').setDescription(e.messaage));
+      this.client.logger.error(e.message);
+      return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured'));
     }
   }
 };

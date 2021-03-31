@@ -22,7 +22,8 @@ module.exports = class PingCommand extends Command {
         .setTimestamp();
       setTimeout(() => { message.edit('', embed); }, 5000);
     } catch (e) {
-      msg.channel.send(CreateEmbed('warn', '⛔ | An error occured').setDescription(e.messaage));
+      this.client.logger.error(e.message);
+      msg.channel.send(CreateEmbed('warn', '⛔ | An error occured'));
     }
   }
 };
