@@ -11,16 +11,29 @@ module.exports = class PingCommand extends Command {
       },
       category: 'Util',
       cooldown: 3000,
+      args: [
+        {
+          id: 'command',
+          type: 'commandAlias',
+        },
+      ],
     });
   }
 
-  async exec(msg) {
+  async exec(msg, { command }) {
     try {
-      const embed = CreateEmbed('info')
-        .addField(`${this.client.user.username} command's`, `${this.client.config.prefix} [command]`);
-      for (const category of this.handler.categories.values()) {
-        embed.addField(category, `${category.filter((cmd) => cmd.aliases.length > 0).map((cmd) => `\`${cmd.aliases[0]}\``).join(', ')}`);
+      if (!command) {
+        const embed = CreateEmbed('info')
+          .addField(`${this.client.user.username} command's`, `${this.client.config.prefix} [command]`);
+        for (const category of this.handler.categories.values()) {
+          embed.addField(category, `${category.filter((cmd) => cmd.aliases.length > 0).map((cmd) => `\`${cmd.aliases[0]}\``).join(', ')}`);
+        }
+        return msg.channel.send(embed);
       }
+      const embed = CreateEmbed('info')
+        .addField('Description', `${command.description.content ? command.description.content : ''} ${command.description.ownerOnly ? '\n**[Owner Only]**' : ''}`)
+        .addField('Alias', command.aliases.length > 1 ? `\`${command.aliases.join('` `')}\`` : 'None.', true)
+        .addField('Examples', command.description.examples && command.description.examples.length ? `\`${command.aliases[0]} ${command.description.examples.join(`\`\n\`${command.aliases[0]} `)}\`` : 'None.');
       return msg.channel.send(embed);
     } catch (e) {
       return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured').setDescription(e.messaage));

@@ -1,5 +1,6 @@
 const { Command } = require('discord-akairo');
 const { CreateEmbed } = require('../../Utility/CreateEmbed');
+const { CreatePrompt } = require('../../Utility/CreatePrompt');
 
 module.exports = class PlayCommand extends Command {
   constructor() {
@@ -15,6 +16,16 @@ module.exports = class PlayCommand extends Command {
           id: 'query',
           type: 'string',
           match: 'rest',
+          prompt: {
+            start: () => {
+              const embed = CreateEmbed('info').setDescription(CreatePrompt('What music you want to play?'));
+              return { embed };
+            },
+            retry: () => {
+              const embed = CreateEmbed('info').setDescription(CreatePrompt('What music you want to play?'));
+              return { embed };
+            },
+          },
         },
       ],
     });
@@ -41,7 +52,7 @@ module.exports = class PlayCommand extends Command {
           msg.channel.send(CreateEmbed('info', `☑ | Added Playlist ${MusicTracks.playlist.name} [${msg.author}] [\`${MusicTracks.tracks.length} tracks\`]`));
         } else {
           player.queue.add(MusicTracks.tracks[0]);
-          msg.channel.send(CreateEmbed('info', `☑ | Added track ${MusicTracks.tracks[0].title} [${msg.author}]`));
+          msg.channel.send(CreateEmbed('info', `☑ | Added track \`${MusicTracks.tracks[0].title}\` [${msg.author}]`));
         }
         return player.play();
       } if (MusicTracks.loadType === 'PLAYLIST_LOADED') {
@@ -51,7 +62,7 @@ module.exports = class PlayCommand extends Command {
         return msg.channel.send(CreateEmbed('info', `☑ | Added Playlist ${MusicTracks.playlist.name} [${msg.author}] [\`${MusicTracks.tracks.length} tracks\`]`));
       }
       GuildPlayers.queue.add(MusicTracks.tracks[0]);
-      return msg.channel.send(CreateEmbed('info', `☑ | Added track ${MusicTracks.tracks[0].title} [${msg.author}]`));
+      return msg.channel.send(CreateEmbed('info', `☑ | Added track \`${MusicTracks.tracks[0].title}\` [${msg.author}]`));
     } catch (e) {
       return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured').setDescription(e.messaage));
     }

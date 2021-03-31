@@ -11,6 +11,6 @@ module.exports = class trackStart extends Listener {
 
   exec(player, track) {
     const QueueChannel = this.client.channels.cache.get(player.textChannel);
-    QueueChannel.send(CreateEmbed('info', `▶ | now playing ${track.title} [${track.requester}]`));
+    QueueChannel.send(CreateEmbed('info', `▶ | Now playing \`${track.title}\` [${track.requester}]`));
   }
 };
