@@ -16,7 +16,6 @@ module.exports = class NowPlayCommand extends Command {
 
   async exec(msg) {
     try {
-        
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
       if (!GuildPlayers) return msg.channel.send(CreateEmbed('info', '⛔ | There no music playing in this guild'));
       return msg.channel.send(CreateEmbed('info', stripIndent`
@@ -27,7 +26,7 @@ module.exports = class NowPlayCommand extends Command {
 
       Next Track:
       \`\`\`css
-      ${GuildPlayers.queue.values().next().value ? `${GuildPlayers.queue.values().next().value.title} | [${GuildPlayers.queue.values().next().value.requester.username}]` : 'None.' }
+      ${GuildPlayers.queue.values().next().value ? `${GuildPlayers.queue.values().next().value.title} | [${GuildPlayers.queue.values().next().value.requester.username}]` : 'None.'}
       \`\`\`
       `));
     } catch (e) {
