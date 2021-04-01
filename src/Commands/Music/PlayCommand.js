@@ -34,7 +34,7 @@ module.exports = class PlayCommand extends Command {
   async exec(msg, { query }) {
     try {
       /**TEMP CHANGES*/
-      const MusicTracks = await this.client.erela.search(query, msg.author, 'soundcloud');
+      const MusicTracks = await this.client.erela.search({ query, source: "soundcloud" }, msg.author);
       if (MusicTracks.loadType === 'NO_MATCHES') return msg.channel.send(CreateEmbed('warn', '⛔ | No result found.'));
       if (MusicTracks.loadType === 'LOAD_FAILED') return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured when loading the track.'));
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
