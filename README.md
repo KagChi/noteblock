@@ -12,5 +12,21 @@ A open-source music bot based on lavalink.
  - npm i / yarn install
  - npm start / yarn start
 
+## Replit
+ - Go to [replit.com](https://replit.com) and create account
+ - Click `Create` and then `Import From Github`
+ - Paste the link E.g `https://github.com/KagChi/noteblock`
+ - get your bot token [Discord Developer Portal](https://discord.com/developers/applications)
+ - paste your token to `.env` with variable `DISCORD_TOKEN= yOuR nIcE tOkEn`
+ - run the code
+
+## Glitch
+ - Go to [glitch.com](https://glitch.com) and create account
+ - Click `New Project` and then `Import From Github`
+ - Paste the link E.g `https://github.com/KagChi/noteblock`
+ - get your bot token [Discord Developer Portal](https://discord.com/developers/applications)
+ - paste your token to `.env` with variable `DISCORD_TOKEN= yOuR nIcE tOkEn`
+ 
 ## Disclaimer
+ - please support the project by give the project star
  - please don't sell the code under any circumstances, the code will always free.
