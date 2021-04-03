@@ -43,6 +43,7 @@ module.exports = class PlayCommand extends Command {
           guild: msg.guild.id,
           voiceChannel: msg.member.voice.channel.id,
           textChannel: msg.channel.id,
+          selfDeafen: true,
         });
         player.connect();
         /* eslint no-restricted-syntax: "off" */
