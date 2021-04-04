@@ -10,7 +10,7 @@
   "dependencies": {
     "common-tags": "^1.8.0",
     "discord-akairo": "^8.1.0",
-    "discord.js": "^12.5.1",
+    "discord.js": "^12.5.3",
     "dotenv": "^8.2.0",
     "erela.js": "^2.3.3",
     "log4js": "^6.3.0",
