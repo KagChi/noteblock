@@ -12,7 +12,7 @@
     "discord-akairo": "^8.1.0",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
-    "erela.js": "^2.3.2",
+    "erela.js": "^2.3.3",
     "log4js": "^6.3.0",
     "ms": "^2.1.3"
   },
