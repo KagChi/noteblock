@@ -8,6 +8,7 @@
   "license": "GPL-3.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.21.1",
     "common-tags": "^1.8.0",
     "discord-akairo": "^8.1.0",
     "discord.js": "^12.5.3",
