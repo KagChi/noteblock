@@ -12,6 +12,10 @@ A open-source music bot based on lavalink.
  - npm i / yarn install
  - npm start / yarn start
 
+## Plugin Used
+ - erela.js-spotify [Link](https://www.npmjs.com/package/erela.js-spotify)
+ - erela.js-deezer [Link](https://www.npmjs.com/package/erela.js-deezer)
+
 ## Replit
  - Go to [replit.com](https://replit.com) and create account
  - Click `Create` and then `Import From Github`
