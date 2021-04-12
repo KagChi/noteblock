@@ -8,4 +8,7 @@ module.exports = {
     password: 'youshallnotpass',
   }],
   prefix: 'nb!',
+  enablePlugin: false,
+  spotifySecret: '',
+  spotifyClientID: '',
 };
