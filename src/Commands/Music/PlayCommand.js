@@ -41,7 +41,7 @@ module.exports = class PlayCommand extends Command {
       if (!GuildPlayers) {
         const player = await this.client.erela.create({
           guild: msg.guild.id,
-          voiceChannel: msg.member.voice.channel.id,
+          voiceChannel: msg.member.voice.channelID,
           textChannel: msg.channel.id,
           selfDeafen: true,
         });
