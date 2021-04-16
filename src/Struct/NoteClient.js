@@ -1,4 +1,5 @@
 const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
+const { Intents } = require('discord.js');
 const { join } = require('path');
 const config = require('../config');
 const { CreateEmbed } = require('../Utility/CreateEmbed');
@@ -8,9 +9,20 @@ module.exports = class NoteClient extends AkairoClient {
   constructor() {
     super({
       ownerID: config.owners,
+      intents: [
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MEMBERS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_VOICE_STATES,
+      ],
     }, {
       partials: ['CHANNEL', 'MESSAGE', 'GUILD_MEMBER'],
-      ws: { intents: ['GUILD_MEMBERS', 'GUILD_VOICE_STATES', 'GUILD_MESSAGES', 'GUILDS'] },
+      intents: [
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MEMBERS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_VOICE_STATES,
+      ],
     });
     this.logger = logger;
     this.config = config;

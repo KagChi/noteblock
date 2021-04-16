@@ -7,7 +7,7 @@
 ## Self Hosting
  - Fill `config.js`
  - rename `.env.scheme` to `.env`
- - Node.JS requirements `12.x`
+ - Node.JS requirements `14.x`
 
 ## Running The Code
  - npm i / yarn install
