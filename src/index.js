@@ -1,5 +1,6 @@
 const { Manager } = require('erela.js');
-const Spotify = require('./Plugin/Spotify'), Deezer = require('./Plugin/Deezer');
+const Spotify = require('./Plugin/Spotify');
+const Deezer = require('./Plugin/Deezer');
 const NoteClient = require('./Struct/NoteClient');
 
 const Client = new NoteClient();
