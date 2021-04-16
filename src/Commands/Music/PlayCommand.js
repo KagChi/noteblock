@@ -38,6 +38,7 @@ module.exports = class PlayCommand extends Command {
       if (MusicTracks.loadType === 'NO_MATCHES') return msg.channel.send(CreateEmbed('warn', '⛔ | No result found.'));
       if (MusicTracks.loadType === 'LOAD_FAILED') return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured when loading the track.'));
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
+      if (!msg.member.voice.channelID) return msg.channel.send(CreateEmbed('warn', '⛔ | you must join voice channel to do this.'));
       if (!GuildPlayers) {
         const player = await this.client.erela.create({
           guild: msg.guild.id,
@@ -57,7 +58,9 @@ module.exports = class PlayCommand extends Command {
           msg.channel.send(CreateEmbed('info', `☑ | Added track \`${MusicTracks.tracks[0].title}\` [${msg.author}]`));
         }
         return player.play();
-      } if (MusicTracks.loadType === 'PLAYLIST_LOADED') {
+      }
+      if (msg.member.voice.channelID !== GuildPlayers.VoiceChannel) return msg.channel.send(CreateEmbed('warn', '⛔ | you must join voice channel same as me to do this.'));
+      if (MusicTracks.loadType === 'PLAYLIST_LOADED') {
         for (const track of MusicTracks.tracks) {
           GuildPlayers.queue.add(track);
         }
