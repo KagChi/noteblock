@@ -10,6 +10,8 @@ module.exports = class trackStart extends Listener {
 
   async exec(player, oldChannel, newChannel) {
     this.client.logger.info(`PLAYER MOVED TO [${newChannel}]`);
+    /* eslint no-param-reassign: "off" */
+    player.voiceChannel = newChannel;
     setTimeout(() => player.pause(false), 3000);
   }
 };
