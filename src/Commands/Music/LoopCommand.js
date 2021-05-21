@@ -20,10 +20,10 @@ module.exports = class LoopCommand extends Command {
       if (!msg.member.voice.channelID) return msg.channel.send(CreateEmbed('warn', '⛔ | You must join voice channel to do this.'));
       if (msg.member.voice.channelID !== GuildPlayers.voiceChannel) return msg.channel.send(CreateEmbed('warn', '⛔ | You must join voice channel same as me to do this.'));
       GuildPlayers.setQueueRepeat(!GuildPlayers.queueRepeat);
-      return msg.channel.send(CreateEmbed('info', `👌 | ${GuildPlayers.queueRepeat ? 'Enabled loop' : 'Disabled loop'}`));
+      return msg.channel.send(CreateEmbed('info', `👌 | ${GuildPlayers.queueRepeat ? 'Enabled loop' : 'Disabled loop'}.`));
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured'));
+      return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured.'));
     }
   }
 };
