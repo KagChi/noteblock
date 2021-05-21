@@ -21,8 +21,8 @@ module.exports = class NoteClient extends AkairoClient {
       defaultCooldown: 3000,
       argumentDefaults: {
         prompt: {
-          timeout: CreateEmbed('info', '⛔ | command timeout.'),
-          ended: CreateEmbed('info', '⛔ | invalid arguments, command session has ended.'),
+          timeout: CreateEmbed('info', '⛔ | Command timeout.'),
+          ended: CreateEmbed('info', '⛔ | Invalid arguments, command session has ended.'),
           retries: 3,
           time: 30000,
         },
