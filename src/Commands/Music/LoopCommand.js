@@ -6,7 +6,7 @@ module.exports = class LoopCommand extends Command {
     super('loop', {
       aliases: ['loop'],
       description: {
-        content: 'loop guild queue',
+        content: 'Loop guild queue',
       },
       category: 'Music',
       cooldown: 3000,
