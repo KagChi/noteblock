@@ -18,11 +18,11 @@ module.exports = class VolumeCommand extends Command {
           match: 'rest',
           prompt: {
             start: () => {
-              const embed = CreateEmbed('info').setDescription(CreatePrompt('How much do you want to change the volume'));
+              const embed = CreateEmbed('info').setDescription(CreatePrompt('How much do you want to change the volume?'));
               return { embed };
             },
             retry: () => {
-              const embed = CreateEmbed('info').setDescription(CreatePrompt('Input valid number between 1-100'));
+              const embed = CreateEmbed('info').setDescription(CreatePrompt('Input valid number between 1-100.'));
               return { embed };
             },
           },
