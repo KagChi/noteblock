@@ -2,10 +2,10 @@ module.exports = {
   owners: [],
   nodes: [{
     identifier: 'NODE-MAIN',
-    host: 'node3.rockbusterhostings.in.net',
-    port: 65535,
+    host: 'lava.link',
+    port: 80,
     secure: false,
-    password: 'pass134',
+    password: 'youshallnotpass',
   }],
   prefix: 'nb!',
   enablePlugin: false,
