@@ -22,9 +22,6 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },
-  "engines": {
-    "node": "14.x"
-  },
   "devDependencies": {
     "eslint": "^7.24.0",
     "eslint-config-airbnb-base": "^14.2.1",
