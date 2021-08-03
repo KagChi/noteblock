@@ -18,7 +18,7 @@ module.exports = class BoundCommand extends Command {
       const GuildPlayers = this.client.erela.players.get(msg.guild.id);
       if (!GuildPlayers) return msg.channel.send({ embeds: [CreateEmbed('info', '⛔ | There no music playing in this guild')] });
       if (!msg.member.voice.channelId) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel to do this.')] });
-      if (msg.member.voice.channelId !== GuildPlayers.voiceChannel) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel same as me to do this.')] });
+      if (msg.author.id !== GuildPlayers.queue?.current.requester.id) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | Only requester can do this.')] });
       await GuildPlayers.setVoiceChannel(msg.member.voice.channelId);
       await GuildPlayers.setTextChannel(msg.channel.id);
       return msg.channel.send({ embeds: [CreateEmbed('info', '👌 | updated channel.')] });
