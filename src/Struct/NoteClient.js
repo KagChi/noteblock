@@ -2,12 +2,13 @@ const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akair
 const { Intents } = require('discord.js');
 const { join } = require('path');
 const { Manager } = require('erela.js');
+const Spotify = require('better-erela.js-spotify');
 const { CreatePrompt } = require('../Utility/CreatePrompt');
 const Deezer = require('../Plugin/Deezer');
 const config = require('../config');
 const { CreateEmbed } = require('../Utility/CreateEmbed');
 const { logger } = require('../Utility/Logger');
-const Spotify = require('better-erela.js-spotify');
+
 module.exports = class NoteClient extends AkairoClient {
   constructor() {
     super({
@@ -28,7 +29,7 @@ module.exports = class NoteClient extends AkairoClient {
       plugins: [
         new Deezer(),
         new Spotify({
-          convertUnresolved: false
+          convertUnresolved: false,
         }),
       ],
       send: (id, payload) => {
@@ -43,21 +44,11 @@ module.exports = class NoteClient extends AkairoClient {
       defaultCooldown: 3000,
       argumentDefaults: {
         prompt: {
-          modifyStart: (message, text) => {
-            return { embeds: [CreateEmbed('info', CreatePrompt(text))] }
-          },
-          modifyRetry: (message, text) => {
-            return { embeds: [CreateEmbed('info', CreatePrompt(text))] }
-          },
-          modifyTimeout: () => {
-            return { embeds: [CreateEmbed('warn', '⛔ | command timeout.')] }
-          },
-          modifyEnded: () => {
-            return { embeds: [CreateEmbed('warn', '⛔ | command ended.')] }
-          },
-          modifyCancel: () => {
-            return { embeds: [CreateEmbed('info', '⛔ | invalid arguments, command session has ended.')] }
-          },
+          modifyStart: (message, text) => ({ embeds: [CreateEmbed('info', CreatePrompt(text))] }),
+          modifyRetry: (message, text) => ({ embeds: [CreateEmbed('info', CreatePrompt(text))] }),
+          modifyTimeout: () => ({ embeds: [CreateEmbed('warn', '⛔ | command timeout.')] }),
+          modifyEnded: () => ({ embeds: [CreateEmbed('warn', '⛔ | command ended.')] }),
+          modifyCancel: () => ({ embeds: [CreateEmbed('info', '⛔ | invalid arguments, command session has ended.')] }),
           retries: 3,
           time: 30000,
         },

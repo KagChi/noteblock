@@ -1,6 +1,5 @@
 const { Command } = require('discord-akairo');
 const { CreateEmbed } = require('../../Utility/CreateEmbed');
-const { CreatePrompt } = require('../../Utility/CreatePrompt');
 
 module.exports = class PlayCommand extends Command {
   constructor() {

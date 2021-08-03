@@ -18,7 +18,8 @@ module.exports = class StatsCommand extends Command {
 
   async exec(msg) {
     try {
-      msg.channel.send({ embeds: [CreateEmbed('info', stripIndent`
+      msg.channel.send({
+        embeds: [CreateEmbed('info', stripIndent`
 System Statistics:
 \`\`\`js
 Operating System: ${process.platform}
@@ -31,7 +32,8 @@ Music Statistics:
 Uptime: ${ms(this.client.erela.nodes.values().next().value.stats.uptime, { long: true })}
 Playing Players: ${this.client.erela.nodes.values().next().value.stats.playingPlayers}
 \`\`\`
-`)] });
+`)],
+      });
     } catch (e) {
       this.client.logger.error(e.message);
       msg.channel.send(CreateEmbed('warn', '⛔ | An error occured'));
