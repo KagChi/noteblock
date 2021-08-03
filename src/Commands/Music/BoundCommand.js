@@ -21,10 +21,10 @@ module.exports = class BoundCommand extends Command {
       if (msg.member.voice.channelId !== GuildPlayers.voiceChannel) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel same as me to do this.')] });
       await GuildPlayers.setVoiceChannel(msg.member.voice.channelId);
       await GuildPlayers.setTextChannel(msg.channel.id);
-      return msg.channel.send(CreateEmbed('info', '👌 | updated channel.'));
+      return msg.channel.send({ embeds: [CreateEmbed('info', '👌 | updated channel.')] });
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured'));
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
     }
   }
 };
