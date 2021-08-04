@@ -8,7 +8,7 @@ const Deezer = require('../Plugin/Deezer');
 const config = require('../config');
 const { CreateEmbed } = require('../Utility/CreateEmbed');
 const { logger } = require('../Utility/Logger');
-const erelaJsNodeDcHandler = require('erela.js-node_dc_handler');
+const erelaJsNodeDcHandler = require('erela.js-automove');
 module.exports = class NoteClient extends AkairoClient {
   constructor() {
     super({
