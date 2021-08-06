@@ -26,6 +26,7 @@ Operating System: ${process.platform}
 Node.js: ${process.version}
 Version: ${version}
 Uptime: ${ms(this.client.uptime, { long: true })}
+Discord.js: ${require("discord.js").version}
 \`\`\`
 Music Statistics:
 \`\`\`css

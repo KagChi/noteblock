@@ -8,7 +8,6 @@ const Deezer = require('../Plugin/Deezer');
 const config = require('../config');
 const { CreateEmbed } = require('../Utility/CreateEmbed');
 const { logger } = require('../Utility/Logger');
-const erelaJsNodeDcHandler = require('erela.js-automove');
 module.exports = class NoteClient extends AkairoClient {
   constructor() {
     super({
@@ -16,7 +15,6 @@ module.exports = class NoteClient extends AkairoClient {
     }, {
       intents: [
         Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MEMBERS,
         Intents.FLAGS.GUILD_MESSAGES,
         Intents.FLAGS.GUILD_VOICE_STATES,
       ],
@@ -30,8 +28,7 @@ module.exports = class NoteClient extends AkairoClient {
         new Deezer(),
         new Spotify({
           convertUnresolved: false,
-        }),
-        new erelaJsNodeDcHandler()
+        })
       ],
       send: (id, payload) => {
         const guild = this.guilds.cache.get(id);

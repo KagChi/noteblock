@@ -26,12 +26,12 @@ module.exports = class PingCommand extends Command {
         const embed = CreateEmbed('info')
           .addField(`${this.client.user.username} command's`, `${this.client.config.prefix}help [command]`);
         for (const category of this.handler.categories.values()) {
-          embed.addField(category, `${category.filter((cmd) => cmd.aliases.length > 0).map((cmd) => `\`${cmd.aliases[0]}\``).join(', ')}`);
+          embed.addField(String(category), `${category.filter((cmd) => cmd.aliases.length > 0).map((cmd) => `\`${cmd.aliases[0]}\``).join(', ')}`);
         }
         return msg.channel.send({ embeds: [embed] });
       }
       const embed = CreateEmbed('info')
-        .addField('Description', `${command.description.content ? command.description.content : ''} ${command.description.ownerOnly ? '\n**[Owner Only]**' : ''}`)
+        .addField('Description', `${command.description.content ? command.description.content : 'None'} ${command.description.ownerOnly ? '\n**[Owner Only]**' : '[Public Use]'}`)
         .addField('Alias', command.aliases.length > 1 ? `\`${command.aliases.join('` `')}\`` : 'None.', true)
         .addField('Examples', command.description.examples && command.description.examples.length ? `\`${command.aliases[0]} ${command.description.examples.join(`\`\n\`${command.aliases[0]} `)}\`` : 'None.');
       return msg.channel.send({ embeds: [embed] });
