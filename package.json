@@ -1,6 +1,6 @@
 {
   "name": "noteblock",
-  "version": "1.1.0",
+  "version": "1.2.0-next",
   "description": "A music discord bot",
   "main": "src/main",
   "repository": "https://github.com/KagChi/noteblock.git",
@@ -9,16 +9,19 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
+    "better-erela.js-spotify": "github:NezuChan/better-erela.js-spotify",
     "common-tags": "^1.8.0",
-    "discord-akairo": "^8.1.0",
-    "discord.js": "^12.5.3",
-    "dotenv": "^10.0.0",
+    "discord-akairo": "github:discord-akairo/discord-akairo",
+    "discord.js": "13.0.0",
+    "dotenv": "^8.2.0",
     "erela.js": "^2.3.3",
+    "erela.js-automove": "github:NezuChan/erela.js-autoMove",
     "log4js": "^6.3.0",
-    "ms": "^2.1.3"
+    "ms": "^2.1.3",
+    "node": "^16.6.1"
   },
   "scripts": {
-    "start": "node src/main",
+    "start": "bash start.sh",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },

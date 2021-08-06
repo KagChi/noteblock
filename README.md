@@ -7,15 +7,20 @@
 ## Self Hosting
  - Fill `config.js`
  - rename `.env.scheme` to `.env`
- - Node.JS requirements `12.x`
+ - Node.JS requirements `16.6.x`
 
 ## Running The Code
  - npm i / yarn install
  - npm start / yarn start
 
 ## Plugin Used
- - erela.js-spotify [Link](https://www.npmjs.com/package/erela.js-spotify)
+ - better-erela.js-spotify [Link](https://www.npmjs.com/package/better-erela.js-spotify)
  - erela.js-deezer [Link](https://www.npmjs.com/package/erela.js-deezer)
+
+## Feature
+ - Spotify support (no api key required)
+ - Lavalink
+ - Lightweight
 
 ## Replit
  - Go to [replit.com](https://replit.com) and create account

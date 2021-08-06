@@ -9,8 +9,10 @@ module.exports = class trackStart extends Listener {
     });
   }
 
-  exec(player, track) {
+  async exec(player, track) {
     const QueueChannel = this.client.channels.cache.get(player.textChannel);
-    QueueChannel.send(CreateEmbed('info', `▶ | Now playing \`${track.title}\` [${track.requester}]`));
+    const sendMessage = await QueueChannel.send({ embeds: [CreateEmbed('info', `▶ | Now playing \`${track.title}\` [${track.requester}]`)] });
+    if (track.isStream) return;
+    setTimeout(() => sendMessage.delete(), track.duration);
   }
 };

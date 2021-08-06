@@ -1,5 +1,10 @@
 const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
+const { Intents } = require('discord.js');
 const { join } = require('path');
+const { Manager } = require('erela.js');
+const Spotify = require('better-erela.js-spotify');
+const { CreatePrompt } = require('../Utility/CreatePrompt');
+const Deezer = require('../Plugin/Deezer');
 const config = require('../config');
 const { CreateEmbed } = require('../Utility/CreateEmbed');
 const { logger } = require('../Utility/Logger');
@@ -9,20 +14,40 @@ module.exports = class NoteClient extends AkairoClient {
     super({
       ownerID: config.owners,
     }, {
-      partials: ['CHANNEL', 'MESSAGE', 'GUILD_MEMBER'],
-      ws: { intents: ['GUILD_MEMBERS', 'GUILD_VOICE_STATES', 'GUILD_MESSAGES', 'GUILDS'] },
+      intents: [
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_VOICE_STATES,
+      ],
     });
     this.logger = logger;
     this.config = config;
+    this.erela = new Manager({
+      autoPlay: true,
+      nodes: this.config.nodes,
+      plugins: [
+        new Deezer(),
+        new Spotify({
+          convertUnresolved: false,
+        }),
+      ],
+      send: (id, payload) => {
+        const guild = this.guilds.cache.get(id);
+        if (guild) guild.shard.send(payload);
+      },
+    });
     this.commandHandler = new CommandHandler(this, {
-      allowMention: false,
+      allowMention: true,
       directory: join(__dirname, '..', 'Commands'),
       prefix: config.prefix,
       defaultCooldown: 3000,
       argumentDefaults: {
         prompt: {
-          timeout: CreateEmbed('info', '⛔ | Command timeout.'),
-          ended: CreateEmbed('info', '⛔ | Invalid arguments, command session has ended.'),
+          modifyStart: (message, text) => ({ embeds: [CreateEmbed('info', CreatePrompt(text))] }),
+          modifyRetry: (message, text) => ({ embeds: [CreateEmbed('info', CreatePrompt(text))] }),
+          modifyTimeout: () => ({ embeds: [CreateEmbed('warn', '⛔ | command timeout.')] }),
+          modifyEnded: () => ({ embeds: [CreateEmbed('warn', '⛔ | command ended.')] }),
+          modifyCancel: () => ({ embeds: [CreateEmbed('info', '⛔ | invalid arguments, command session has ended.')] }),
           retries: 3,
           time: 30000,
         },
@@ -45,7 +70,6 @@ module.exports = class NoteClient extends AkairoClient {
       erela: this.erela,
     });
     this.ListenerHandler.loadAll();
-
     this.login();
   }
 };

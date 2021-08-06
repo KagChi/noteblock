@@ -20,7 +20,7 @@ module.exports = class PingCommand extends Command {
         .addField('⏳ Latency ', `__**${message.createdTimestamp - msg.createdTimestamp}ms**__`)
         .addField('💓 API', `__**${Math.floor(this.client.ws.ping)}ms**__`)
         .setTimestamp();
-      setTimeout(() => { message.edit('', embed); }, 5000);
+      setTimeout(() => { message.edit({ content: null, embeds: [embed] }); }, 5000);
     } catch (e) {
       this.client.logger.error(e.message);
       msg.channel.send(CreateEmbed('warn', '⛔ | An error occured'));
