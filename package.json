@@ -21,7 +21,7 @@
     "node": "^16.6.1"
   },
   "scripts": {
-    "start": "node src/main",
+    "start": "bash start.sh",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },
