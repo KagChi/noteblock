@@ -8,6 +8,7 @@ const Deezer = require('../Plugin/Deezer');
 const config = require('../config');
 const { CreateEmbed } = require('../Utility/CreateEmbed');
 const { logger } = require('../Utility/Logger');
+
 module.exports = class NoteClient extends AkairoClient {
   constructor() {
     super({
@@ -28,7 +29,7 @@ module.exports = class NoteClient extends AkairoClient {
         new Deezer(),
         new Spotify({
           convertUnresolved: false,
-        })
+        }),
       ],
       send: (id, payload) => {
         const guild = this.guilds.cache.get(id);

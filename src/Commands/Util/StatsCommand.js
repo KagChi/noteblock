@@ -1,6 +1,7 @@
 const { stripIndent } = require('common-tags');
 const { Command } = require('discord-akairo');
 const ms = require('ms');
+const Discord = require('discord.js');
 const { CreateEmbed } = require('../../Utility/CreateEmbed');
 const { version } = require('../../../package.json');
 
@@ -26,7 +27,7 @@ Operating System: ${process.platform}
 Node.js: ${process.version}
 Version: ${version}
 Uptime: ${ms(this.client.uptime, { long: true })}
-Discord.js: ${require("discord.js").version}
+Discord.js: ${Discord.version}
 \`\`\`
 Music Statistics:
 \`\`\`css

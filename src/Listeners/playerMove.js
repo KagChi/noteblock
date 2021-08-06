@@ -14,10 +14,10 @@ module.exports = class playerMove extends Listener {
     try {
       player.setVoiceChannel(newChannel ?? player.voiceChannel);
     } catch (e) {
-      player.destroy()
+      player.destroy();
     }
     player.voiceChannel = newChannel;
     setTimeout(() => player.pause(false), 3000);
-    return void 0
+    return undefined;
   }
 };
