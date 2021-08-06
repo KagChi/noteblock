@@ -12,7 +12,7 @@
     "better-erela.js-spotify": "github:NezuChan/better-erela.js-spotify",
     "common-tags": "^1.8.0",
     "discord-akairo": "github:discord-akairo/discord-akairo",
-    "discord.js": "github:discordjs/discord.js",
+    "discord.js": "13.0.0",
     "dotenv": "^8.2.0",
     "erela.js": "^2.3.3",
     "erela.js-automove": "github:NezuChan/erela.js-autoMove",
