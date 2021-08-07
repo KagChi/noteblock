@@ -50,7 +50,7 @@ module.exports = class PlayCommand extends Command {
         }
         return player.play();
       }
-      if (msg.member.voice.channelId !== GuildPlayers.VoiceChannel) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel same as me to do this.')] });
+      if (msg.member.voice.channelId !== GuildPlayers.voiceChannel) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel same as me to do this.')] });
       if (MusicTracks.loadType === 'PLAYLIST_LOADED') {
         for (const track of MusicTracks.tracks) {
           GuildPlayers.queue.add(track);
