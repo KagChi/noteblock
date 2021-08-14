@@ -15,7 +15,8 @@ if you want to use the slash commands do:
  - go to config.js
  - change `updateSlash` to `true`
  - start bot
-*you only can do this once bot doesnt have slash commands.
+
+*you only can do this if the bot doesnt have slash commands.*
   
 ## Running The Code
  - npm i / yarn install
