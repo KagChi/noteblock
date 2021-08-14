@@ -1,5 +1,6 @@
 const { Listener } = require('discord-akairo');
 const { CreateEmbed } = require('../Utility/CreateEmbed');
+
 module.exports = class interactionCreate extends Listener {
   constructor() {
     super('interactionCreate', {
@@ -21,4 +22,3 @@ module.exports = class interactionCreate extends Listener {
     command.executeSlash(interaction);
   }
 };
-
