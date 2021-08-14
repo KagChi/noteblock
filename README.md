@@ -1,6 +1,6 @@
 <a href="https://github.com/KagChi/noteblock"> <img align="right" src="https://cdn.discordapp.com/avatars/584333920875708426/8a4ed8376a2c612e30270783b74b6901.jpg?size=2048" width="150"></a>
 
-> [@noteblock](https://github.com/KagChi/noteblock) (A open-source music bot based on lavalink.) 🤖: Version: 1.1.0.
+> [@noteblock](https://github.com/KagChi/noteblock) (A open-source music bot based on lavalink.) 🤖: Version: 1.3.0.
 
 🎵 | Listen to a music with style! Feature rich with high quality music from YouTube/Soundcloud.
 
@@ -9,6 +9,14 @@
  - rename `.env.scheme` to `.env`
  - Node.JS requirements `16.6.x`
 
+## Slash Commands
+
+if you want to use the slash commands do:
+ - go to config.js
+ - change `updateSlash` to `true`
+ - start bot
+*you only can do this once bot doesnt have slash commands.
+  
 ## Running The Code
  - npm i / yarn install
  - npm start / yarn start
