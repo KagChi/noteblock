@@ -2,6 +2,7 @@ const { Listener } = require('discord-akairo');
 const slashCommands = require('../Utility/SlashCommands');
 const { logger } = require('../Utility/Logger');
 const config = require('../config');
+
 module.exports = class Readylistener extends Listener {
   constructor() {
     super('ready', {
@@ -16,9 +17,10 @@ module.exports = class Readylistener extends Listener {
     this.client.user.setActivity(`GrowNote's | ${this.client.config.prefix} help`, { type: 5 });
     this.client.erela.init(this.client.user.id);
     if (!config.updateSlash) return;
-      for (let command of slashCommands) {
-        this.client.application.commands.create(command.toJSON())
-        logger.info(`CREATING ${command.name.toUpperCase()} SLASH COMMAND`)
-      }
+    /* eslint no-restricted-syntax: "off" */
+    for (const command of slashCommands) {
+      this.client.application.commands.create(command.toJSON());
+      logger.info(`CREATING ${command.name.toUpperCase()} SLASH COMMAND`);
     }
+  }
 };
