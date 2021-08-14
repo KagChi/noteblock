@@ -8,11 +8,12 @@
   "license": "GPL-3.0",
   "private": true,
   "dependencies": {
+    "@discordjs/builders": "^0.3.0",
     "axios": "^0.21.1",
     "better-erela.js-spotify": "github:NezuChan/better-erela.js-spotify",
     "common-tags": "^1.8.0",
     "discord-akairo": "github:discord-akairo/discord-akairo",
-    "discord.js": "13.1.0",
+    "discord.js": "^13.1.0",
     "dotenv": "^10.0.0",
     "erela.js": "^2.3.3",
     "erela.js-automove": "github:NezuChan/erela.js-autoMove",
@@ -22,6 +23,7 @@
   },
   "scripts": {
     "start": "bash start.sh",
+    "start:windows": "node src",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },

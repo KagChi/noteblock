@@ -7,4 +7,5 @@ module.exports = {
     secure: true,
   }],
   prefix: 'nb!',
+  updateSlash: false
 };
