@@ -64,4 +64,47 @@ module.exports = class PlayCommand extends Command {
       return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
     }
   }
+
+  /**
+   *
+   * @param {import('discord.js').CommandInteraction} interaction
+   */
+  async executeSlash(interaction) {
+    const query = interaction.options.getString('query');
+    if (!query) interaction.editReply({ embeds: [CreateEmbed('info', '⛔ | Input music name.')] });
+    const MusicTracks = await this.client.erela.search(query, interaction.user);
+    if (MusicTracks.loadType === 'NO_MATCHES') return interaction.editReply({ embeds: [CreateEmbed('warn', '⛔ | No result found.')] });
+    if (MusicTracks.loadType === 'LOAD_FAILED') return interaction.editReply({ embeds: [CreateEmbed('warn', '⛔ | An error occured when loading the track.')] });
+    const GuildPlayers = this.client.erela.players.get(interaction.guild.id);
+    if (!interaction.member.voice.channelId) return interaction.editReply({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel to do this.')] });
+    if (!GuildPlayers) {
+      const player = await this.client.erela.create({
+        guild: interaction.guild.id,
+        voiceChannel: interaction.member.voice.channelId,
+        textChannel: interaction.channel.id,
+        selfDeafen: true,
+      });
+      player.connect();
+      /* eslint no-restricted-syntax: "off" */
+      if (MusicTracks.loadType === 'PLAYLIST_LOADED') {
+        for (const track of MusicTracks.tracks) {
+          player.queue.add(track);
+        }
+        interaction.editReply({ embeds: [CreateEmbed('info', `☑ | Added Playlist ${MusicTracks.playlist.name} [${interaction.user}] [\`${MusicTracks.tracks.length} tracks\`]`)] });
+      } else {
+        player.queue.add(MusicTracks.tracks[0]);
+        interaction.editReply({ embeds: [CreateEmbed('info', `☑ | Added track \`${MusicTracks.tracks[0].title}\` [${interaction.user}]`)] });
+      }
+      return player.play();
+    }
+    if (interaction.member.voice.channelId !== GuildPlayers.voiceChannel) return interaction.editReply({ embeds: [CreateEmbed('warn', '⛔ | you must join voice channel same as me to do this.')] });
+    if (MusicTracks.loadType === 'PLAYLIST_LOADED') {
+      for (const track of MusicTracks.tracks) {
+        GuildPlayers.queue.add(track);
+      }
+      return interaction.editReply({ embeds: [CreateEmbed('info', `☑ | Added Playlist ${MusicTracks.playlist.name} [${interaction.user}] [\`${MusicTracks.tracks.length} tracks\`]`)] });
+    }
+    GuildPlayers.queue.add(MusicTracks.tracks[0]);
+    return interaction.editReply({ embeds: [CreateEmbed('info', `☑ | Added track \`${MusicTracks.tracks[0].title}\` [${interaction.user}]`)] });
+  }
 };
