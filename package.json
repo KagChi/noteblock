@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "bash start.sh",
-    "start:windows": "node src",
+    "start:normal": "node src",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix"
   },
