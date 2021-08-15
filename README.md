@@ -19,9 +19,9 @@ if you want to use the slash commands do:
 *you only can do this if the bot doesnt have slash commands.*
   
 ## Running The Code
- - npm i / yarn install
- - npm start / yarn start
-
+ - npm i 
+ - npm start 
+ - npm start:normal (for normal start, not running bash file, if your machine does not support node.js v16)
 ## Plugin Used
  - better-erela.js-spotify [Link](https://www.npmjs.com/package/better-erela.js-spotify)
  - erela.js-deezer [Link](https://www.npmjs.com/package/erela.js-deezer)
