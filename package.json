@@ -10,7 +10,7 @@
   "dependencies": {
     "@discordjs/builders": "^0.5.0",
     "axios": "^0.21.1",
-    "better-erela.js-spotify": "github:NezuChan/better-erela.js-spotify",
+    "better-erela.js-spotify": "0.2.3",
     "common-tags": "^1.8.0",
     "discord-akairo": "github:discord-akairo/discord-akairo",
     "discord.js": "^13.1.0",
