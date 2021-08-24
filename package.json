@@ -21,7 +21,7 @@
     "node": "^16.6.1"
   },
   "engines": {
-    "node": "v16.6.1"
+    "node": ">=v16.x"
   },
   "scripts": {
     "start": "bash start.sh",
