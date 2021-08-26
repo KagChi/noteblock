@@ -13,8 +13,9 @@
 
 if you want to use the slash commands do:
  - go to config.js
- - change `updateSlash` to `true`
+ - if `updateSlash` show `false` change to `true`
  - start bot
+ - change again to false
 
 *you only can do this if the bot doesnt have slash commands.*
   
