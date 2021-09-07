@@ -15,6 +15,9 @@ module.exports = {
     'no-await-in-loop': "off",
     'no-plusplus': "off",
     'no-restricted-syntax': "off",
-    'consistent-return': "off"
+    'consistent-return': "off",
+    'no-return-await': "off",
+    'no-param-reassign': "off",
+    'import/no-extraneous-dependencies': "off"
   },
 };
