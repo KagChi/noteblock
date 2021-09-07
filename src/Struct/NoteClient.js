@@ -8,6 +8,7 @@ const Deezer = require('../Plugin/Deezer');
 const config = require('../config');
 const { CreateEmbed } = require('../Utility/CreateEmbed');
 const { logger } = require('../Utility/Logger');
+require('../Extenders/Node');
 
 module.exports = class NoteClient extends AkairoClient {
   constructor() {
