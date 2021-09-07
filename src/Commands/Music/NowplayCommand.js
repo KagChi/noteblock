@@ -33,7 +33,7 @@ module.exports = class NowPlayCommand extends Command {
       });
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured.'));
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
     }
   }
 };

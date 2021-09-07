@@ -38,7 +38,7 @@ Playing Players: ${this.client.erela.nodes.values().next().value.stats.playingPl
       });
     } catch (e) {
       this.client.logger.error(e.message);
-      msg.channel.send(CreateEmbed('warn', '⛔ | An error occured'));
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
     }
   }
 };

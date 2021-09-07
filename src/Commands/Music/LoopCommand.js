@@ -23,7 +23,7 @@ module.exports = class LoopCommand extends Command {
       return msg.channel.send({ embeds: [CreateEmbed('info', `👌 | ${GuildPlayers.queueRepeat ? 'Enabled loop' : 'Disabled loop'}`)] });
     } catch (e) {
       this.client.logger.error(e.message);
-      return msg.channel.send(CreateEmbed('warn', '⛔ | An error occured.'));
+      return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured')] });
     }
   }
 };
