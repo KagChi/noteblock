@@ -11,5 +11,10 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {
+    'no-constant-condition': "off",
+    'no-await-in-loop': "off",
+    'no-plusplus': "off",
+    'no-restricted-syntax': "off",
+    'consistent-return': "off"
   },
 };
