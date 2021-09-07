@@ -56,7 +56,7 @@ module.exports = class NoteClient extends AkairoClient {
     }).on('commandFinished', (msg, command) => {
       this.logger.info(`[${msg.author.tag}] USING [${command.id.toUpperCase()}] COMMANDS`);
     }).on('cooldown', async (msg, command, remaining) => {
-      const awaitMsg = await msg.channel.send(CreateEmbed('warn', `Chill.. wait ${(remaining / 1000).toFixed(2)} second(s) to use command again`));
+      const awaitMsg = await msg.channel.send({ embeds: [CreateEmbed('warn', `Chill.. wait ${(remaining / 1000).toFixed(2)} second(s) to use command again`)] });
       setTimeout(() => awaitMsg.delete(), remaining);
       this.logger.warn(`[${msg.author.tag}] GETTING RATE LIMIT ON [${command.id.toUpperCase()}] COMMANDS`);
     });
