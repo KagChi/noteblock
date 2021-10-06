@@ -9,7 +9,7 @@
   "private": true,
   "dependencies": {
     "@discordjs/builders": "^0.6.0",
-    "axios": "^0.21.1",
+    "axios": "^0.22.0",
     "better-erela.js-spotify": "1.1.2",
     "common-tags": "^1.8.0",
     "discord-akairo": "github:discord-akairo/discord-akairo",
