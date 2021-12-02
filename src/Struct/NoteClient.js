@@ -2,7 +2,8 @@ const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akair
 const { Intents } = require('discord.js');
 const { join } = require('path');
 const { Manager } = require('erela.js');
-const Spotify = require('better-erela.js-spotify').default;
+const { default: Spotify } = require('better-erela.js-spotify');
+const { default: AppleMusic } = require('better-erela.js-apple');
 const { CreatePrompt } = require('../Utility/CreatePrompt');
 const Deezer = require('../Plugin/Deezer');
 const config = require('../config');
@@ -29,9 +30,8 @@ module.exports = class NoteClient extends AkairoClient {
       nodes: this.config.nodes,
       plugins: [
         new Deezer(),
-        new Spotify({
-          convertUnresolved: false,
-        }),
+        new Spotify(),
+        new AppleMusic()
       ],
       send: (id, payload) => {
         const guild = this.guilds.cache.get(id);
