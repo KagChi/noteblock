@@ -31,7 +31,7 @@ module.exports = class NoteClient extends AkairoClient {
       plugins: [
         new Deezer(),
         new Spotify(),
-        new AppleMusic()
+        new AppleMusic(),
       ],
       send: (id, payload) => {
         const guild = this.guilds.cache.get(id);
