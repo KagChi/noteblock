@@ -19,6 +19,6 @@ module.exports = class interactionCreate extends Listener {
     if (!interaction.deferred) await interaction.deferReply();
     const command = this.client.commandHandler.modules.get(interaction.commandName);
     if (!command || !command.executeSlash) return interaction.editReply({ embeds: [CreateEmbed('info', `❌ command ${interaction.commandName} does not exist`)] });
-    command.executeSlash(interaction);
+    await command.executeSlash(interaction);
   }
 };
