@@ -25,6 +25,8 @@ module.exports = class PlayCommand extends Command {
 
   async exec(msg, { query }) {
     try {
+      const node = this.client.erela.leastUsedNodes.first();
+      if (!node || !node.connected) return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | No nodes are currently connected.')] });
       const MusicTracks = await this.client.erela.search(query, msg.author);
       if (MusicTracks.loadType === 'NO_MATCHES') return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | No result found.')] });
       if (MusicTracks.loadType === 'LOAD_FAILED') return msg.channel.send({ embeds: [CreateEmbed('warn', '⛔ | An error occured when loading the track.')] });
