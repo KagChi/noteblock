@@ -15,7 +15,7 @@
     "common-tags": "1.8.2",
     "discord-akairo": "github:discord-akairo/discord-akairo",
     "discord.js": "13.6.0",
-    "dotenv": "14.2.0",
+    "dotenv": "14.3.0",
     "erela.js": "2.3.3",
     "log4js": "6.4.0",
     "ms": "2.1.3"
