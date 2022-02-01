@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Run test
 on:
   push:
     branches: [ main ]
@@ -17,4 +17,4 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn install
-    - run: yarn lint
+    - run: yarn lint && yarn build
