@@ -34,7 +34,10 @@ module.exports = class QueueCommand extends Command {
         });
       }
       const pages = chunk(GuildPlayers?.queue.map((x, i) => `\`${i + 1}\` ${x.title} [${x.requester}]`), 7);
-      const embed = CreateEmbed('info').setAuthor(`${msg.guild?.name} queue list`, msg.guild.iconURL());
+      const embed = CreateEmbed('info').setAuthor({
+        name: `${msg.guild?.name} queue list`,
+        iconURL: msg.guild.iconURL(),
+      });
       await new Pagination(msg, {
         pages,
         embed,
