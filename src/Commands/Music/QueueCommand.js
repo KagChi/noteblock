@@ -39,7 +39,7 @@ module.exports = class QueueCommand extends Command {
         pages,
         embed,
         edit: (index, emb, page) => emb.setDescription(Array.isArray(page) ? page.join('\n') : page)
-          .setFooter(`Page ${index + 1} of ${pages.length}`),
+          .setFooter({ text: `Page ${index + 1} of ${pages.length}` }),
       }).start();
     } catch (e) {
       this.client.logger.error(e.message);
