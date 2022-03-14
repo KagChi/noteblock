@@ -2,3 +2,5 @@ node_modules
 .env
 logs
 src/config
+package-lock.json
+dist

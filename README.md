@@ -1,6 +1,6 @@
 <a href="https://github.com/KagChi/noteblock"> <img align="right" src="https://cdn.discordapp.com/avatars/584333920875708426/8a4ed8376a2c612e30270783b74b6901.jpg?size=2048" width="150"></a>
 
-> [@noteblock](https://github.com/KagChi/noteblock) (An open-source music bot based on lavalink.) 🤖: Version: 1.3.0.
+> [@noteblock](https://github.com/KagChi/noteblock) (An open-source music bot based on lavalink.) 🤖: Version: 2.0.0.
 
 🎵 | Listen to a music with style! Feature rich with high quality music from YouTube/Soundcloud.
 
@@ -8,27 +8,12 @@
  - Fill `config.js`
  - rename `.env.scheme` to `.env`
  - Node.JS requirements `16.6.x`
-
-## Slash Commands
-
-if you want to use the slash commands do:
- - go to config.js
- - if `updateSlash` show `false` change to `true`
- - start bot
- - change again to false
-
-*you only can do this if the bot doesnt have slash commands.*
   
 ## Running The Code
  - npm i 
  - npm start 
- - npm start:normal (for normal start, not running bash file, if your machine does not support node.js v16)
-## Plugin Used
- - better-erela.js-spotify [Link](https://www.npmjs.com/package/better-erela.js-spotify)
- - erela.js-deezer [Link](https://www.npmjs.com/package/erela.js-deezer)
 
-## Feature
- - Spotify support (no api key required)
+## Feature 
  - Lavalink
  - Lightweight
 
