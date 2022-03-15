@@ -1,14 +1,14 @@
-import { KirishimaNode } from "@kirishima/core";
-import { ApplyOptions } from "@sapphire/decorators";
-import { Listener } from "@sapphire/framework";
+import {KirishimaNode} from '@kirishima/core';
+import {ApplyOptions} from '@sapphire/decorators';
+import {Listener} from '@sapphire/framework';
 
 @ApplyOptions<Listener.Options>({
-    name: "nodeConnect",
-    emitter: "kirishima"
+  name: 'nodeConnect',
+  emitter: 'kirishima',
 })
 
 export class nodeConnect extends Listener {
-    public async run(node: KirishimaNode) {
-        this.container.logger.info(`Node ${node.options.identifier} has been connected`);
-    }
+  public run(node: KirishimaNode) {
+    this.container.logger.info(`Node ${node.options.identifier} has been connected`);
+  }
 }
