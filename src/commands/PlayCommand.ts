@@ -1,4 +1,4 @@
-import {KirishimaPlayer, KirishimaTrack} from '@kirishima/core';
+import {KirishimaPlayer} from '@kirishima/core';
 import {ApplyOptions} from '@sapphire/decorators';
 import {Args, Command, isErr} from '@sapphire/framework';
 import {Message, MessageEmbed} from 'discord.js';
@@ -16,6 +16,7 @@ export class PlayCommand extends Command {
       guildId: message.guildId!,
       channelId: message.member?.voice.channel?.id!,
       textChannelId: message.channel.id,
+      selfDeaf: true,
     }) as KirishimaPlayer;
 
     if (!player.connected) await player.connect();
@@ -35,7 +36,7 @@ export class PlayCommand extends Command {
     const {tracks, loadType, playlistInfo} = await this.container.client.kirishima.resolveTracks(userArgument.value);
 
     if (loadType === 'PLAYLIST_LOADED') {
-      player.queue.add(tracks as KirishimaTrack[]);
+      player.queue.add(tracks);
 
       if (player.queue.totalSize === tracks.length) await player.playTrack();
 
@@ -49,7 +50,7 @@ export class PlayCommand extends Command {
     }
 
     if (tracks.length) {
-      player.queue.add(tracks[0] as KirishimaTrack);
+      player.queue.add(tracks[0]);
 
       if (!player.playing && !player.queue.size) await player.playTrack();
 
