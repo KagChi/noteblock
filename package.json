@@ -8,8 +8,9 @@
   "license": "GPL-3.0",
   "private": true,
   "dependencies": {
-    "@kirishima/core": "^0.5.0",
-    "@kirishima/queue": "^0.3.3",
+    "@kirishima/core": "^0.6.4",
+    "@kirishima/deezer": "^0.1.3",
+    "@kirishima/queue": "^0.3.4",
     "@kirishima/rest": "^0.1.3",
     "@sapphire/decorators": "^4.3.1",
     "@sapphire/framework": "^3.0.0-next.5524516.0",

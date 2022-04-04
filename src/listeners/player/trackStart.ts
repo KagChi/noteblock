@@ -15,7 +15,7 @@ export class trackStart extends Listener {
       await channel.send({
         embeds: [
           new MessageEmbed()
-              .setDescription(`🎶 | Now playing: ${track.info.title}`)
+              .setDescription(`🎶 | Now playing: ${track.info?.title}`)
               .setColor('BLURPLE'),
         ],
       });

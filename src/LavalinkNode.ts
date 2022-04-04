@@ -2,6 +2,7 @@ import {KirishimaNodeOptions} from '@kirishima/core';
 
 export const LavalinkNode: KirishimaNodeOptions[] = [
   {
-    url: 'lava.link:80',
+    url: 'usui-linku.kadantte.moe:443',
+    password: 'Usui#0256',
   },
 ];

@@ -34,7 +34,6 @@ export class PlayCommand extends Command {
     }
 
     const {tracks, loadType, playlistInfo} = await this.container.client.kirishima.resolveTracks(userArgument.value);
-
     if (loadType === 'PLAYLIST_LOADED') {
       player.queue.add(tracks);
 
@@ -51,13 +50,12 @@ export class PlayCommand extends Command {
 
     if (tracks.length) {
       player.queue.add(tracks[0]);
-
       if (!player.playing && !player.queue.size) await player.playTrack();
 
       return message.channel.send({
         embeds: [
           new MessageEmbed()
-              .setDescription(`✅ | Loaded ${tracks[0].info.title}`)
+              .setDescription(`✅ | Loaded ${tracks[0].info?.title}`)
               .setColor('BLURPLE'),
         ],
       });

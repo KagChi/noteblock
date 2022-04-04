@@ -5,6 +5,7 @@ import {Kirishima, KirishimaPlayerOptions, payload} from '@kirishima/core';
 import {KirishimaQueue} from '@kirishima/queue';
 import {join} from 'path';
 import {LavalinkNode} from '../LavalinkNode';
+import {KirishimaDeezer} from '@kirishima/deezer';
 
 class NoteClient extends SapphireClient {
   public constructor() {
@@ -33,6 +34,7 @@ class NoteClient extends SapphireClient {
       return shard.send(payload);
     },
     plugins: [
+      new KirishimaDeezer(),
       new KirishimaQueue(),
     ],
   });
