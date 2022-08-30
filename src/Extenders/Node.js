@@ -1,6 +1,5 @@
 const { Structure } = require('erela.js');
 const WebSocket = require('ws');
-const fetch = require('petitio');
 const { version } = require('../../package.json');
 
 class Node extends Structure.get('Node') {
@@ -24,20 +23,6 @@ class Node extends Structure.get('Node') {
     this.socket.on('close', this.close.bind(this));
     this.socket.on('message', this.message.bind(this));
     this.socket.on('error', this.error.bind(this));
-  }
-
-  async makeRequest(endpoint, modify) {
-    endpoint = endpoint.replace(/^\//gm, '');
-
-    const request = fetch(`http${this.options.secure ? 's' : ''}://${this.options.host}:${this.options.port}/${endpoint}`)
-      .header('Authorization', this.options.password).header('User-Agent', `NoteBlock v${version}`);
-
-    if (modify) {
-      await modify(request);
-    }
-
-    this.calls++;
-    return await request.json();
   }
 }
 
