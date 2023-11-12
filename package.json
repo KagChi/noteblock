@@ -14,7 +14,7 @@
     "better-erela.js-spotify": "1.3.11",
     "common-tags": "1.8.2",
     "discord-akairo": "github:discord-akairo/discord-akairo",
-    "discord.js": "13.10.3",
+    "discord.js": "13.17.1",
     "dotenv": "16.0.0",
     "erela.js": "github:menudocs/erela.js#build",
     "log4js": "6.5.2",
